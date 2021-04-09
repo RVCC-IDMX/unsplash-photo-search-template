@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 exports.handler = async (event) => {
   const { query } = JSON.parse(event.body);
 
-  const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&order_by=popular`, {
+  const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&color=black-and-white`, {
     method: 'GET',
     headers: {
       Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
