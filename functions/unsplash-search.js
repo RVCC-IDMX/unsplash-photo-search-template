@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&order_by=popular`, {
     method: 'GET',
     headers: {
-      Authorization: `Client-ID ${process.env.UNSPLASH_API_TOKEN}`,
+      Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
     },
   })
     .then((response) => response.json())

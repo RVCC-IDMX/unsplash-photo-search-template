@@ -6,6 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unsplash Photo Search</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    figure {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    figcaption {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,7 +44,7 @@
   <div class="popular">
     <figure>
       <img src="" alt="" class="post__img">
-      <figcaption class="post__username"></figcaption>
+      <figcaption class="post__user"></figcaption>
       <p class="post__desc"></p>
     </figure>
   </div>
@@ -44,7 +67,16 @@
         .then((res) => res.json())
         .catch((err) => console.error(err));
 
-      console.log(response);
+      console.log(response.results[0]);
+
+      const dataObj = response.results[0]
+
+      // 
+
+      const postImg = document.querySelector('.post__img')
+      postImg.src = dataObj.urls.small;
+      const postUser = document.querySelector('.post__user');
+      postUser.innerText = `by ${dataObj.user.name}`;
     });
   </script>
 </body>
