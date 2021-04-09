@@ -1,0 +1,8 @@
+[build]
+  publish = "src"
+  functions = "functions"
+  command = "cd functions && npm i && cd .."
+
+[dev]
+  publish = "src"
+  port = 8888
