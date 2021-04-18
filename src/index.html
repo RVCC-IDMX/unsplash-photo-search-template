@@ -69,7 +69,14 @@
 
       const dataObj = response.results[0]
 
-      // Put code to give attribution line to photographer
+      const postImg = document.querySelector('.post__img')
+      postImg.src = dataObj.urls.small;
+      const postUser = document.querySelector('.post__user');
+      /* 
+        Add an attribution statement below using the
+        postUser element and the photographer's name from dataObj
+       */
+
 
 
     });
