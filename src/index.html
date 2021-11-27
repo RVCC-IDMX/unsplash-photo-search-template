@@ -5,82 +5,42 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="./camera.svg">
+  <link rel="stylesheet" href="style.css">
   <title>Unsplash Photo Search</title>
-  <style>
-    body {
-      font-family: sans-serif;
-    }
-
-    figure {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 80%;
-      max-width: 400px;
-    }
-
-    figcaption {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    img {
-      max-width: 100%;
-    }
-  </style>
 </head>
 
 <body>
   <h1>Unsplash Search</h1>
 
-  <!-- TODO add search form -->
+  <!-- search form -->
   <form class="search-form">
     <label for="query">Search</label>
+    <br>
     <input id="query" name="query" type="text" />
-    <button>Search</button>
+    <br>
+    <button>Submit</button>
   </form>
 
-  <div class="popular">
-    <figure>
-      <img src="" alt="" class="post__img">
-      <figcaption class="post__user"></figcaption>
-      <p class="post__desc"></p>
-    </figure>
+  <div id="template">
+    <div class="popular">
+      <figure>
+        <img src="" alt="" class="post__img">
+        <figcaption class="post__user"></figcaption>
+        <p class="post__desc"></p>
+      </figure>
+    </div>
   </div>
 
+  <div class="container"></div>
 
-  <script>
-    const form = document.querySelector('.search-form');
+  <footer>
+    <p>
+      <a href="https://unsplash.com/">All images, courtesy of Unsplash</a>
+    </p>
+  </footer>
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(event.target);
-
-      const response = await fetch('/.netlify/functions/unsplash-search', {
-        method: 'POST',
-        body: JSON.stringify({
-          query: formData.get('query'),
-        }),
-      })
-        .then((res) => res.json())
-        .catch((err) => console.error(err));
-
-      const dataObj = response.results[0]
-
-      const postImg = document.querySelector('.post__img')
-      postImg.src = dataObj.urls.small;
-      const postUser = document.querySelector('.post__user');
-      /* 
-        Add an attribution statement below using the
-        postUser element and the photographer's name from dataObj
-       */
-
-
-
-    });
-  </script>
+  <script src="./app.js"></script>
 </body>
 
 </html>

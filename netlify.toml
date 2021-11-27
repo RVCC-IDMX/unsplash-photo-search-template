@@ -1,5 +1,5 @@
 [build]
-  publish = "src"
+  publish = "dist"
   functions = "functions"
   command = "cd functions && npm i && cd .."
 
